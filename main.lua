@@ -10,7 +10,7 @@
 
 display.setStatusBar(display.HiddenStatusBar)
 
-local age = 17
+local age = 15
 local ageEntered
 local instructions = display.newText( 'Guess my age:', 550, 200, native.systemFont, 128 )
 instructions.id = "instructions"
@@ -24,10 +24,8 @@ enterButton.y = 500
 enterButton.id = "Enter Button"
 
 local function onEnterClicked( event )
-	
+	ageEntered = tonumber(ageTextField.text)
 	repeat
-	    ageEntered = tonumber(ageTextField.text)
-
 	    if ageEntered == age then
 	    	local rightText = display.newText( 'You got it right!', display.contentCenterX, 900, native.systemFont, 128 )
 
@@ -37,6 +35,7 @@ local function onEnterClicked( event )
 	    else
 	    	local lowText = display.newText( 'You are too low. Try again.', display.contentCenterX, 900, native.systemFont, 128 )
 	    end
-	  until ageEntered == age
+	until( ageEntered == age )
 end
+
 enterButton:addEventListener( 'touch', onEnterClicked)
